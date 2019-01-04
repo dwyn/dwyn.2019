@@ -9,6 +9,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'foreman', '~> 0.85.0'
+gem 'active_model_serializers'
 gem 'jwt'
 gem 'rack-cors'
 
