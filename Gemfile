@@ -13,6 +13,7 @@ gem 'foreman', '~> 0.85.0'
 gem 'active_model_serializers'
 gem 'rack-cors'
 gem 'devise'
+gem 'simple_token_authentication', '~> 1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
