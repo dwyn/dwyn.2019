@@ -1,6 +1,7 @@
 
 class Api::V1::PostsController < ApplicationController
   def index
+    binding.pry
     posts = get_current_user.posts.all
 
     render json: posts
