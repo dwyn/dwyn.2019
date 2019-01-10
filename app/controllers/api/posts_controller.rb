@@ -1,6 +1,9 @@
-
-class Api::V1::PostsController < ApplicationController
+class Api::PostsController < ApplicationController
+  load_and_authorize_resource
+  
   def index
+    @posts
+    @user
     binding.pry
     posts = get_current_user.posts.all
 
@@ -22,6 +25,13 @@ class Api::V1::PostsController < ApplicationController
   end
 
   private
+  def create_params
+    params.require(:post).permit(
+      :title,
+      :body
+    )
+  end
+
 
   def post_params
     params.require(:post).permit(

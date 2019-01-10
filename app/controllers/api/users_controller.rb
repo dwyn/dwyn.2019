@@ -1,13 +1,7 @@
-class Api::V1::UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   def create
-    user = User.create(user_params)
-
-    if user
-      jwt = Auth.encrypt({ user_id: user.id })
-      render json: { jwt: jwt, current: user }
-    else
-      render json: { error: 'Failed to Sign Up' }, status: 400
-    end
+    @user = User.create(user_params)
+    binding.pry
   end
 
   def login
@@ -29,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-        :username,
+        :email,
         :password,
         :password_confirmation,
         :firstname,
