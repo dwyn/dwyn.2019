@@ -2,31 +2,30 @@ class Api::PostsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @posts
-    @user
-    binding.pry
-    posts = get_current_user.posts.all
-
+    posts = current_user.posts.all
     render json: posts
   end
 
   def create
-    post = get_current_user.posts.build(post_params)
+    post = current_user.posts.build(post_params)
     post.save
 
-    render json: post
+    render json: @post
   end
 
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
-
-    render json: post
+    post = current_user.posts.where(id: params[:id]).first
+    if post.destroy
+      head(:ok)
+    else
+      head(:unprocessable_entity)
+    end
   end
 
   private
   def create_params
     params.require(:post).permit(
+      :id,
       :title,
       :body
     )
