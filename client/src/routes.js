@@ -3,16 +3,20 @@ import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom'
 
 import Login from './containers/Login'
 import Signup from './containers/Signup'
-import Landing from './containers/Landing'
+import LandingContainer from './containers/LandingContainer'
 
 export default (
   <BrowserRouter>
     <Switch id='routes'>
-      <Route exact path='/' render={() => loggedIn() ? <Landing /> : <Redirect to="/login" />} />
-      <Route path='/signup' component={() => loggedIn() ? <Redirect to="/" /> : <Signup />} />
+      <Route path='/' component={LandingContainer} />
+      <Route path=`users/${user.id}/post/new` component={() => loggedIn() ? <PostForm /> : <:Login />} />
+
+
+      {/* <Route exact path='/' render={() => loggedIn() ? <Landing /> : <Redirect to="/login" />} /> */}
+      {/* <Route path='/signup' component={() => loggedIn() ? <Redirect to="/" /> : <Signup />} />
       <Route path='/login' component={() => loggedIn() ? <Redirect to="/" /> : <Login />} />
-      <Route path='/logout' component={() => logout()} />
-      <Route path='/posts' component={() => loggedIn() ? <Landing /> : <Redirect to="/login" />} />
+      <Route path='/logout' component={() => logout()} /> */}
+      {/* <Route path='/api/posts' component={Landing} /> */}
 
       <Route path='/tests' component={() => <div>Testing Path<br /><Link to="/">Back Home</Link></div>} />
     </Switch>

@@ -1,24 +1,41 @@
-
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import Aux from '../hoc/Aux'
+import { fetchUser } from '../actions/userActions'
+import { fetchPosts, deletePost } from '../actions/postActions'
+
+import Post from '../components/Post/Post'
 
 class LandingContainer extends Component {
+  componentWillMount() {
+    this.props.fetchPosts()
+  }
   render() {
+    const { user, posts } = this.props
+    
     return (
-      <Aux >
-        <div> Header </div>
-        <div> List of posts </div>
-      </Aux>
+      <div>
+        { posts.map(post => <Post key={post.id} post={post} deletePost={this.props.deletePost} />) }
+      </div>
     )
   }
 }
 
-export default LandingContainer;
+const mapStateToProps = state => {
+  return {
+    user: state.user.current,
+    post: state.posts.all
+  }
+}
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchUser,
+  fetchPosts,
+  deletePost,
+}, dispatch)
 
+export default connect(mapStateToProps, mapDispatchToProps)(LandingContainer)
 
 
 

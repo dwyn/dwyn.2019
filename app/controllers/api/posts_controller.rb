@@ -1,9 +1,9 @@
 class Api::PostsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   
   def index
-    posts = current_user.posts.all
-    render json: posts
+    @posts = Post.all
+    render json: @posts
   end
 
   def create
