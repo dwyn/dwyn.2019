@@ -9,7 +9,9 @@ export default (
   <BrowserRouter>
     <Switch id='routes'>
       <Route path='/' component={LandingContainer} />
-      <Route path=`users/${user.id}/post/new` component={() => loggedIn() ? <PostForm /> : <:Login />} />
+
+      
+      {/* <Route path=`users/${user.id}/post/new` component={() => loggedIn() ? <PostForm /> : <:Login />} /> */}
 
 
       {/* <Route exact path='/' render={() => loggedIn() ? <Landing /> : <Redirect to="/login" />} /> */}

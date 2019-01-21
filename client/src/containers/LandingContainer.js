@@ -12,7 +12,8 @@ class LandingContainer extends Component {
     this.props.fetchPosts()
   }
   render() {
-    const { user, posts } = this.props
+    debugger
+    const {  posts } = this.props
     
     return (
       <div>
@@ -25,7 +26,7 @@ class LandingContainer extends Component {
 const mapStateToProps = state => {
   return {
     user: state.user.current,
-    post: state.posts.all
+    posts: state.posts.all
   }
 }
 

@@ -11,12 +11,17 @@ export const fetchPosts = () => {
   }
 
   return dispatch => {
-    fetch(`${API_URL}/posts`, data)
-      .then(response => response.json())
-      .then(posts => dispatch({
+    debugger
+    return fetch(`${API_URL}/posts`)
+      .then(response => {
+        debugger
+        return response.json()})
+      .then(posts => {
+        debugger
+        dispatch({
         type: 'FETCH_POSTS',
         payload: posts
-      }))
+      })})
       .catch(err => err)
   }
 }
