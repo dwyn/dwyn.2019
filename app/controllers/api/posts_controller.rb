@@ -3,7 +3,6 @@ class Api::PostsController < ApplicationController
   
   def index
     @posts = Post.all
-   
     render json: @posts
   end
 
@@ -31,7 +30,6 @@ class Api::PostsController < ApplicationController
       :body
     )
   end
-
 
   def post_params
     params.require(:post).permit(

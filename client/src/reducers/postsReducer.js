@@ -6,7 +6,6 @@ const initialState = {
 export default function postsReducer(state = initialState, action) {
   switch (action.type) {
     case 'FETCH_POSTS':
-    debugger
       return { ...state, all: action.payload }
     case 'CREATE_POST':
       return { ...state, all: [...state.all, action.payload] }

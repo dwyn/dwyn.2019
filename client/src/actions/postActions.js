@@ -5,24 +5,18 @@ export const fetchPosts = () => {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'//,
-      // 'Authorization': 'JnmYxP9MrsQhq2-sTR5d'
+      'Content-Type': 'application/json'
     }
   }
 
   return dispatch => {
-    debugger
-    return fetch(`${API_URL}/posts`)
-      .then(response => {
-        debugger
-        return response.json()})
-      .then(posts => {
-        debugger
-        dispatch({
+    fetch(`${API_URL}/posts` , data)
+      .then(response => response.json())
+      .then(posts => dispatch({
         type: 'FETCH_POSTS',
         payload: posts
-      })})
-      .catch(err => err)
+      }))
+    .catch(err => err)
   }
 }
 

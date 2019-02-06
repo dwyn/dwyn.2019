@@ -2,19 +2,20 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import PostShow from '../components/Post/PostShow'
 import { fetchPosts } from '../actions/postActions'
 
-import PostList from '../components/Post/PostList'
-
-class LandingContainer extends Component {
+class PostContainer extends Component {
   componentWillMount() {
     this.props.fetchPosts()
   }
 
   render() {
-    const {  posts } = this.props
+    const { posts } = this.props
     return (
-      <PostList allPosts={posts}/>
+      <div>
+        <PostShow allPosts={posts} />
+      </div>
     )
   }
 }
@@ -30,6 +31,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   mapDispatchToProps
-)(LandingContainer);
+)(PostContainer);

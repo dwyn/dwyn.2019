@@ -1,0 +1,100 @@
+## From PostList ##
+// const posts = props.allPosts;
+
+   debugger
+    return allPosts.map((post) => {
+      return (
+        <li className="list-group-item" key={post._id}>
+          <Link style={{ color: 'black' }} to={"posts/" + post._id}>
+            <h3 className="list-group-item-heading">{post.title}</h3>
+          </Link>
+        </li>
+      );
+    });
+  }
+
+
+
+
+
+
+        // <div>
+      //   { posts.map(post => <Post key={post.id} post={post} deletePost={this.props.deletePost} />) }
+      // </div>
+
+
+## For Authentication ##
+server 
+
+hacker 
+
+client
+
+params 
+username 
+password 
+
+def login 
+  user = User.find(params[:username])
+
+  jwt = Auth.encrypt(user.id)
+  if(user.password === params[:password]) render json: { user: user  }
+    
+  render json: { status: 404, message: "User not found or password incorrect"}
+end 
+
+## MORE ROUTES ##
+import Login from './containers/Login'
+import Signup from './containers/Signup'
+
+
+{/* <Route path=`users/${user.id}/post/new` component={() => loggedIn() ? <PostForm /> : <:Login />} /> */}
+
+
+{/* <Route exact path='/' render={() => loggedIn() ? <Landing /> : <Redirect to="/login" />} /> */}
+{/* <Route path='/signup' component={() => loggedIn() ? <Redirect to="/" /> : <Signup />} />
+<Route path='/login' component={() => loggedIn() ? <Redirect to="/" /> : <Login />} />
+<Route path='/logout' component={() => logout()} /> */}
+{/* <Route path='/api/posts' component={Landing} /> */}
+
+
+## I dunno ##
+
+// import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux'; //connects components to redux store!
+// import fetchPosts from '../store/actions/postActions'; //importing fetchPosts action!
+
+// class Posts extends Component {
+//   componentWillMount() {
+//     this.props.fetchPosts(); //fetch request via imported action!
+//   }
+
+//   render() {
+//     const postItems = this.props.posts.map(post => (
+//       <div key={post.id}>
+//         <h3>{post.title}</h3>
+//         <p>{post.body}</p>
+//       </div>
+//     ));
+//     return (
+//       <div>
+//         <h1>Posts</h1>
+//         {postItems}
+//       </div>
+//     );
+//   }
+// }
+
+// Posts.propTypes = {
+//   fetchPosts: PropTypes.func.isRequired,
+//   posts: PropTypes.array.isRequired,
+//   newPost: PropTypes.object
+// };
+
+// const mapStateToProps = state => ({
+//   posts: state.posts.items,
+//   newPost: state.posts.item
+// });
+
+// export default connect(mapStateToProps, { fetchPosts })(Posts);
