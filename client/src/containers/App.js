@@ -15,6 +15,7 @@ class App extends Component{
           <Switch id='routes'>
             <Route exact path="/posts/new" component={NewPostContainer} />
             <Route exact path="/posts/:id" component={PostShow} />
+
             <Route exact path="/" component={LandingContainer} />
           </Switch>
         </React.Fragment>
