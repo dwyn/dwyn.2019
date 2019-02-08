@@ -1,24 +1,21 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+###To run app locally:
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
+2.5.3
 
 * Database creation
+rake db:create
 
 * Database initialization
+rake db:migrate
 
-* How to run the test suite
+* Seeding
+rake db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+* Client app
+cd into client directory
+run `npm install`
 
-* Deployment instructions
-
-* ...
+* Run app locally
+cd into top level directory (dwyn.2019.api)
+run `rake start`

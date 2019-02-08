@@ -10,7 +10,7 @@ export const fetchPosts = () => {
   }
 
   return dispatch => {
-    fetch(`${API_URL}/posts` , data)
+    fetch(`${API_URL}/posts`, data)
       .then(response => response.json())
       .then(posts => dispatch({
         type: 'FETCH_POSTS',
@@ -26,7 +26,7 @@ export const createPost = post => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': sessionStorage.jwt
+      'Authorization': "CPZx-ZdpJ4i2b6-udhy6"
     },
     body: JSON.stringify({ post })
   }

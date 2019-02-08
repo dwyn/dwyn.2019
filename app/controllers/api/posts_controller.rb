@@ -1,16 +1,21 @@
 class Api::PostsController < ApplicationController
-  # load_and_authorize_resource
-  
+  skip_before_action :verify_authenticity_token, raise: false
+
   def index
     @posts = Post.all
     render json: @posts
   end
 
   def create
-    post = current_user.posts.build(post_params)
-    post.save
-
-    render json: @post
+    @user = User.all.first
+    @post = Post.new(post_params.merge(user_id: @user.id))
+    if @post.save
+      render json: @post, status: :created
+      # head(:ok)
+    else
+      render json: @post.errors, status: :unprocessable_entity
+      # head(:unprocessable_entity)
+    end
   end
 
   def destroy

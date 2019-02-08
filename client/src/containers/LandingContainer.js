@@ -3,15 +3,15 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { fetchPosts } from '../actions/postActions'
-
 import PostList from '../components/Post/PostList'
 
 class LandingContainer extends Component {
   componentWillMount() {
     this.props.fetchPosts()
+    // debugger
   }
 
-  render() {
+  render() { // Can I just pass `posts` in here? Why / Why not?
     const {  posts } = this.props
     return (
       <PostList allPosts={posts}/>
