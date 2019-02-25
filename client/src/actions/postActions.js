@@ -1,6 +1,8 @@
+import { FETCH_POSTS, CREATE_POST, DELETE_POST } from "./actionTypes"
+
 const API_URL = 'http://localhost:3001/api'
 
-export const fetchPosts = () => {
+export const fetchPosts = () => dispatch => {
   let data = {
     method: 'GET',
     headers: {
@@ -9,18 +11,18 @@ export const fetchPosts = () => {
     }
   }
 
-  return dispatch => {
-    fetch(`${API_URL}/posts`, data)
-      .then(response => response.json())
-      .then(posts => dispatch({
-        type: 'FETCH_POSTS',
+  fetch(`${API_URL}/posts`, data)
+    .then(res => res.json())
+    .then(posts => 
+      dispatch({
+        type: FETCH_POSTS,
         payload: posts
-      }))
-    .catch(err => err)
-  }
+      })
+    )
+  .catch(err => err)
 }
 
-export const createPost = post => {
+export const createPost = (postData) => dispatch => {
   let data = {
     method: 'POST',
     headers: {
@@ -28,18 +30,16 @@ export const createPost = post => {
       'Content-Type': 'application/json',
       'Authorization': "CPZx-ZdpJ4i2b6-udhy6"
     },
-    body: JSON.stringify({ post })
+    body: JSON.stringify({ postData })
   }
 
-  return dispatch => {
-    fetch(`${API_URL}/posts`, data)
-      .then(response => response.json())
-      .then(post => dispatch({
-        type: 'CREATE_POST',
-        payload: post
-      }))
-      .catch(err => err)
-  }
+  fetch(`${API_URL}/posts`, data)
+    .then(response => response.json())
+    .then(post => dispatch({
+      type: CREATE_POST,
+      payload: post
+    }))
+    .catch(err => err)
 }
 
 export const deletePost = id => {
@@ -56,7 +56,7 @@ export const deletePost = id => {
     fetch(`${API_URL}/posts/${id}`, data)
       .then(response => response.json())
       .then(post => dispatch({
-        type: 'DELETE_POST',
+        type: DELETE_POST,
         payload: post
       }))
       .catch(err => err)

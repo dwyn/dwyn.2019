@@ -17,7 +17,7 @@ class Api::PostsController < ApplicationController
       # head(:unprocessable_entity)
     end
   end
-
+  
   def destroy
     post = current_user.posts.where(id: params[:id]).first
     if post.destroy

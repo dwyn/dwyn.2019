@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Navbar from '../components/Navbar';
+import Mynavbar from '../components/Mynavbar';
 import LandingContainer from './LandingContainer'
 import NewPostContainer from './NewPostContainer'
 import PostShow from '../components/Post/PostShow';
@@ -11,11 +11,10 @@ class App extends Component{
     return (
       <Router>
         <React.Fragment>
-          <Navbar />
+          <Mynavbar />
           <Switch id='routes'>
             <Route exact path="/posts/new" component={NewPostContainer} />
-            <Route exact path="/posts/:id" component={PostShow} />
-
+            <Route exact path="/posts/:id" component={PostShow } />
             <Route exact path="/" component={LandingContainer} />
           </Switch>
         </React.Fragment>
