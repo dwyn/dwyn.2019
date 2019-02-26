@@ -28,8 +28,9 @@ class NewPostContainer extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-
+    console.log('A')
     this.props.createPost(this.state)
+    console.log('B')
     this.setState({
       title: "",
       body: ""

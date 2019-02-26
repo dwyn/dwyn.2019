@@ -22,7 +22,8 @@ export const fetchPosts = () => dispatch => {
   .catch(err => err)
 }
 
-export const createPost = (postData) => dispatch => {
+export const createPost = (post) => dispatch => {
+  console.log('C')
   let data = {
     method: 'POST',
     headers: {
@@ -30,16 +31,19 @@ export const createPost = (postData) => dispatch => {
       'Content-Type': 'application/json',
       'Authorization': "CPZx-ZdpJ4i2b6-udhy6"
     },
-    body: JSON.stringify({ postData })
+    body: JSON.stringify({ post })
   }
 
   fetch(`${API_URL}/posts`, data)
     .then(response => response.json())
-    .then(post => dispatch({
+    .then(postData => {
+      console.log('D')
+      dispatch({
       type: CREATE_POST,
-      payload: post
-    }))
+      payload: postData
+    })})
     .catch(err => err)
+    console.log('E')
 }
 
 export const deletePost = id => {

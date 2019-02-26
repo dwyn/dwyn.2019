@@ -36,7 +36,7 @@ class LandingContainer extends Component {
               if (index >= start_offset && start_count < per_page) {
                 start_count++;
                 return(
-                  <PostSnippet key={post.id} post={post} />
+                  <PostSnippet key={post.id} post={post}/>
                 );
               }
             })}
